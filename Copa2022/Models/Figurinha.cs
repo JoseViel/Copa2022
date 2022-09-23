@@ -1,17 +1,44 @@
-﻿namespace Copa2022.Models
-{
-    public enum Posicao { Goleiro, Zagueiro, Lateral, Volante, MeioCampo, Atacante }
-    public enum Pais { Catar, Equador, Holanda, Senegal, EstadosUnidos, Inglaterra, Irã, PaísDeGales, Argentina, ArábiaSaudita, México, Polônia, Austrália, Dinamarca, França, Tunísia, Alemanha, CostaRica, Espanha, Japão, Bélgica, Canadá, Marrocos, Croácia, Brasil, Sérvia, Suíça, Camarões, Portugal, Gana, Uruguai, CoreiaDoSul }
-    public enum Raridade { Comum, Brilhante, Bordo, Bronze, Prata, Ouro}
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
+namespace Copa2022.Models
+{
+    public enum Raridade { Comum, Brilhante, Bordo, Bronze, Prata, Ouro }
+
+    [Table("Figurinhas")]
     public class Figurinha
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "ID:")]
         public int id { get; set; }
-        public string descricao { get; set; }
-        public float venda { get; set; }
+
+        [StringLength(40)]
+        [Required(ErrorMessage = "Campo Jogador é obrigatório!")]
+        [Display(Name = "Jogador:")]
+        public string jogador { get; set; }
+
+        [Display(Name = "Compra: ")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public float compra { get; set; }
-        public Pais pais { get; set; }
-        public Posicao posicao { get; set; }
+
+        [Display(Name = "Venda: ")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
+        public float venda { get; set; }
+
+        [StringLength(40)]
+        [Required(ErrorMessage = "Campo Pais é obrigatório!")]
+        [Display(Name = "Pais:")]
+        public string pais { get; set; }
+
+        [StringLength(15)]
+        [Required(ErrorMessage = "Campo Posicao é obrigatório!")]
+        [Display(Name = "Posicao:")]
+        public string posicao { get; set; }
+
+        [Required(ErrorMessage = "Campo Raridade é obrigatório!")]
+        [Display(Name = "Raridade:")]
         public Raridade raridade { get; set; }
 
         public ICollection<Conta> contas { get; set; }
