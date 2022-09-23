@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Copa2022.Models.Figurinha>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:aliceblue">Figurinhas</h1>
+
+<p>
+    <a asp-action="Create">Adicionar Nova Figurinha</a>
+</p>
+<table style="color:aliceblue" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.jogador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.venda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.compra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.posicao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.raridade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.jogador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.venda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.compra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.posicao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.raridade)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Remover</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

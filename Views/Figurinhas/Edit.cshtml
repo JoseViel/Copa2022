@@ -1,0 +1,60 @@
+﻿@model Copa2022.Models.Figurinha
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:aliceblue">Editar Figurinha</h1>
+
+<h4 style="color:aliceblue">Figurinha</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="jogador" class="control-label"></label>
+                <input asp-for="jogador" class="form-control" />
+                <span asp-validation-for="jogador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="venda" class="control-label"></label>
+                <input asp-for="venda" class="form-control" />
+                <span asp-validation-for="venda" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="compra" class="control-label"></label>
+                <input asp-for="compra" class="form-control" />
+                <span asp-validation-for="compra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pais" class="control-label"></label>
+                <select asp-for="pais" class="form-control"></select>
+                <span asp-validation-for="pais" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="posicao" class="control-label"></label>
+                <select asp-for="posicao" class="form-control"></select>
+                <span asp-validation-for="posicao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="raridade" class="control-label"></label>
+                <select asp-for="raridade" class="form-control"></select>
+                <span asp-validation-for="raridade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

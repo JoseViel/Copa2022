@@ -1,0 +1,58 @@
+﻿@model Copa2022.Models.Figurinha
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:aliceblue">Deletar Figurinha</h1>
+
+<h3 style="color:aliceblue">Tem certeza de que quer DELETAR esta Figurinha?</h3>
+<div>
+    <h4 style="color:aliceblue">Figurinha</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.jogador)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.jogador)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.venda)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.venda)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.compra)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.compra)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pais)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pais)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.posicao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.posicao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.raridade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.raridade)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Deletar" class="btn btn-danger" /> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>

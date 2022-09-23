@@ -1,0 +1,45 @@
+﻿@model Copa2022.Models.Conta
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color:aliceblue">Editar Conta</h1>
+
+<h4 style="color:aliceblue">Conta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="clienteid" class="control-label"></label>
+                <select asp-for="clienteid" class="form-control" asp-items="ViewBag.clienteid"></select>
+                <span asp-validation-for="clienteid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="figurinhaid" class="control-label"></label>
+                <select asp-for="figurinhaid" class="form-control" asp-items="ViewBag.figurinhaid"></select>
+                <span asp-validation-for="figurinhaid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="quantidade" class="control-label"></label>
+                <input asp-for="quantidade" class="form-control" />
+                <span asp-validation-for="quantidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
