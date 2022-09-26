@@ -23,7 +23,7 @@ namespace Copa2022.Models
         public int figurinhaid { get; set; }
 
         [Display(Name = "Quantidade: ")]
-        [DisplayFormat(DataFormatString = "{0:C2}")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public float quantidade { get; set; }
 
         public ICollection<Transacao> transacoes { get; set; }

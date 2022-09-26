@@ -47,6 +47,16 @@ namespace Copa2022.Controllers
         // GET: Transacoes/Create
         public IActionResult Create()
         {
+            var operacao = Enum.GetValues(typeof(Operacao))
+           .Cast<Operacao>()
+           .Select(e => new SelectListItem
+           {
+               Value = e.ToString(),
+               Text = e.ToString()
+           });
+
+            ViewBag.bagOperacao = operacao;
+
             ViewData["contaid"] = new SelectList(_context.contas, "id", "id");
             return View();
         }

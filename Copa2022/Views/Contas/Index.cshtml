@@ -5,12 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1 style="color:aliceblue">Contas
+
+</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Criar nova Conta</a>
 </p>
-<table class="table">
+<table style="color:aliceblue" class="table">
     <thead>
         <tr>
             <th>
@@ -29,7 +31,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.cliente.cidade)
+                @Html.DisplayFor(modelItem => item.cliente.nome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.figurinha.jogador)

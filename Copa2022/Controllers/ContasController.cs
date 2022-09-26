@@ -48,7 +48,7 @@ namespace Copa2022.Controllers
         // GET: Contas/Create
         public IActionResult Create()
         {
-            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "cidade");
+            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "nome");
             ViewData["figurinhaid"] = new SelectList(_context.figurinhas, "id", "jogador");
             return View();
         }
@@ -66,7 +66,7 @@ namespace Copa2022.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "cidade", conta.clienteid);
+            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "nome", conta.clienteid);
             ViewData["figurinhaid"] = new SelectList(_context.figurinhas, "id", "jogador", conta.figurinhaid);
             return View(conta);
         }
@@ -84,7 +84,7 @@ namespace Copa2022.Controllers
             {
                 return NotFound();
             }
-            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "cidade", conta.clienteid);
+            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "nome", conta.clienteid);
             ViewData["figurinhaid"] = new SelectList(_context.figurinhas, "id", "jogador", conta.figurinhaid);
             return View(conta);
         }
@@ -121,7 +121,7 @@ namespace Copa2022.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "cidade", conta.clienteid);
+            ViewData["clienteid"] = new SelectList(_context.clientes, "id", "nome", conta.clienteid);
             ViewData["figurinhaid"] = new SelectList(_context.figurinhas, "id", "jogador", conta.figurinhaid);
             return View(conta);
         }
