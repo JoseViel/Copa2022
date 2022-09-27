@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 
 namespace Copa2022.Models
 {
@@ -15,6 +16,7 @@ namespace Copa2022.Models
 
         [Display(Name = "Conta: ")]
         public Conta conta { get; set; }
+        [ForeignKey("Conta")]
         [Display(Name = "Conta: ")]
         public int contaid { get; set; }
 
@@ -32,6 +34,24 @@ namespace Copa2022.Models
         [Display(Name = "Operacao: ")]
         public Operacao operacao { get; set; }
 
+        [Display(Name = "Total: ")]
+        [NotMapped]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
+        public virtual float total
+        {
+            get { return quantidade * valor; }
+        }
+
+        [Display(Name = "Operacao: ")]
+        [NotMapped]
+        public virtual string tipoOperacao
+        {
+
+            get { return (operacao == Operacao.Compra ? "Compra" : "Venda"); }
+        }
+
     }
+
 }
+
 

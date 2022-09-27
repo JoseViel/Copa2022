@@ -87,6 +87,17 @@ namespace Copa2022.Controllers
             {
                 return NotFound();
             }
+
+            var estado = Enum.GetValues(typeof(Estado))
+            .Cast<Estado>()
+            .Select(e => new SelectListItem
+            {
+                Value = e.ToString(),
+                Text = e.ToString()
+            });
+
+            ViewBag.bagEstado = estado;
+
             return View(cliente);
         }
 

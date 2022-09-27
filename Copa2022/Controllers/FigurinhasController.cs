@@ -54,7 +54,6 @@ namespace Copa2022.Controllers
            });
 
             ViewBag.bagRaridade = raridade;
-
             return View();
         }
 
@@ -63,7 +62,7 @@ namespace Copa2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,jogador,venda,compra,pais,posicao,raridade")] Figurinha figurinha)
+        public async Task<IActionResult> Create([Bind("id,jogador,compra,venda,pais,posicao,raridade")] Figurinha figurinha)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +86,17 @@ namespace Copa2022.Controllers
             {
                 return NotFound();
             }
+
+            var raridade = Enum.GetValues(typeof(Raridade))
+           .Cast<Raridade>()
+           .Select(e => new SelectListItem
+           {
+               Value = e.ToString(),
+               Text = e.ToString()
+           });
+
+            ViewBag.bagRaridade = raridade;
+
             return View(figurinha);
         }
 
@@ -95,7 +105,7 @@ namespace Copa2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,jogador,venda,compra,pais,posicao,raridade")] Figurinha figurinha)
+        public async Task<IActionResult> Edit(int id, [Bind("id,jogador,compra,venda,pais,posicao,raridade")] Figurinha figurinha)
         {
             if (id != figurinha.id)
             {

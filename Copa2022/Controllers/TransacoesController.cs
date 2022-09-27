@@ -21,7 +21,7 @@ namespace Copa2022.Controllers
         // GET: Transacoes
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.transacoes.Include(t => t.conta);
+            var contexto = _context.transacoes.Include(c => c.conta).Include(cli => cli.conta.cliente).Include(fig => fig.conta.figurinha);
             return View(await contexto.ToListAsync());
         }
 
@@ -48,13 +48,12 @@ namespace Copa2022.Controllers
         public IActionResult Create()
         {
             var operacao = Enum.GetValues(typeof(Operacao))
-           .Cast<Operacao>()
-           .Select(e => new SelectListItem
-           {
-               Value = e.ToString(),
-               Text = e.ToString()
-           });
-
+             .Cast<Operacao>()
+             .Select(e => new SelectListItem
+             {
+                 Value = e.ToString(),
+                 Text = e.ToString()
+             });
             ViewBag.bagOperacao = operacao;
 
             ViewData["contaid"] = new SelectList(_context.contas, "id", "id");
@@ -91,6 +90,16 @@ namespace Copa2022.Controllers
             {
                 return NotFound();
             }
+
+            var operacao = Enum.GetValues(typeof(Operacao))
+             .Cast<Operacao>()
+             .Select(e => new SelectListItem
+             {
+                 Value = e.ToString(),
+                 Text = e.ToString()
+             });
+            ViewBag.bagOperacao = operacao;
+
             ViewData["contaid"] = new SelectList(_context.contas, "id", "id", transacao.contaid);
             return View(transacao);
         }

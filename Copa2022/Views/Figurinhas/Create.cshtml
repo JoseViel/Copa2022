@@ -1,13 +1,13 @@
 ﻿@model Copa2022.Models.Figurinha
 
 @{
-    ViewData["Title"] = "Inserir Figurinha";
+    ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 style="color:aliceblue">Inserir Figurinha</h1>
+<h1>Create</h1>
 
-<h4 style="color:aliceblue">Figurinha</h4>
+<h4>Figurinha</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -46,14 +46,14 @@
                 <span asp-validation-for="raridade" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Inserir" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Voltar</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
