@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1 style="color:aliceblue">Transações</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Inserir Transação</a>
 </p>
-<table class="table">
+<table style="color:aliceblue" class="table">
     <thead>
         <tr>
             <th>
@@ -66,12 +66,12 @@
                     totGeral = totGeral + total;
                 }
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Deletar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-<h2>Total Geral = @totGeral.ToString("C2"); </h2>
+<h2 style="color:aliceblue">Total Geral = @totGeral.ToString("C2"); </h2>
