@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Copa2022.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cliente</h1>
+
+<p>
+    <a asp-action="Pesquisa">Pesquisar</a>
+</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Cliente">
+            <div class="form-group">
+                <label class="form-label">Buscar</label>
+                <input type="text" class="form-control" name="filtro"/>
+                 <input type="submit" value="Filtrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idade)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
