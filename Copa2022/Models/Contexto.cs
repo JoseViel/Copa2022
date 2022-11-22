@@ -14,6 +14,9 @@ namespace Copa2022.Models
         public DbSet<Conta> contas { get; set; }
         public DbSet<Transacao> transacoes { get; set; }
         public DbSet<Copa2022.Models.Consulta.TransacaoQry> TransacaoQry { get; set; }
+        public DbSet<Copa2022.Models.Consulta.TransacaoGrpOperacao> TransacaoGrpOperacao { get; set; }
+        public DbSet<Copa2022.Models.Consulta.ContaMes> ContaMes { get; set; }
+        public DbSet<Copa2022.Models.Consulta.PivotMes> PivotMes { get; set; }
 
     }
 }
